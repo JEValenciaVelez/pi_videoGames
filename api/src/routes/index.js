@@ -2,6 +2,7 @@ const { Router } = require('express');
 const { getGames } = require('../controllers/getGames');
 const getGamesDb = require('../controllers/getGamesDb');
 const createGame = require('../controllers/createGame');
+const getGameById = require('../controllers/getGamesById');
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 
@@ -19,6 +20,23 @@ router.get('/videogames', async (req, res)=>{
   }
 
 });
+
+
+router.get('/videogames/:idVideogame', async (req, res)=>{
+
+  const {idVideogame} = req.params;
+
+
+  try{
+    res.status(200).json(await getGameById(idVideogame));
+  }catch(error){
+    res.status(404).json({error: error});
+  }
+
+});
+
+
+
 
 router.get('/database', async (req, res)=>{
 
