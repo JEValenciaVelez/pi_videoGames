@@ -9,7 +9,7 @@ const getGames = async() => {
     try{
         const response = await axios.get(`${URL}?key=${API_KEY}`);
         const data = response.data;
-        console.log(data.results)
+        //console.log(data.results)
         const games = data.results.map(game=>{
             return {
                 id: game.id,

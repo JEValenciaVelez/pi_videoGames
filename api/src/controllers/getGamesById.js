@@ -7,7 +7,7 @@ const getGameById = async (id) => {
     try{
         const response = await axios.get(`${URL}/${id}?key=${API_KEY}`);
         const data = response.data;
-        console.log(data);
+        //console.log(data);
        
             const game = {
                 id: data.id,
@@ -19,7 +19,7 @@ const getGameById = async (id) => {
                 released: data.released
             }
         
-        console.log(game);
+        //console.log(game);
 
         return game;
     }catch(error){
