@@ -5,6 +5,7 @@ const createGame = require('../controllers/createGame');
 const getGameById = require('../controllers/getGamesById');
 const getGameByName = require('../controllers/getGamesByName');
 const getGenres = require('../controllers/getGenres');
+const deleteGame = require('../controllers/deleteGame');
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 
@@ -83,7 +84,7 @@ router.get('/database', async (req, res)=>{
 //================================================================================================================
 
 
-router.post('/videogames', async(req, res)=>{
+router.post('/database', async(req, res)=>{
 
   try{
       res.status(200).json(await createGame(req.body));
@@ -95,6 +96,14 @@ router.post('/videogames', async(req, res)=>{
 
 //================================================================================================================
 
+
+router.delete('/delete', async (req, res)=>{
+  try{
+    res.status(200).json(await deleteGame(req.body.name));
+}catch(error){
+    res.status(404).json({error: error.message});
+}
+});
 
 
 module.exports = router;
