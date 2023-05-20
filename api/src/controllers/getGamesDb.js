@@ -1,16 +1,20 @@
-const Videogame = require("../models/Videogame");
 
-
+const {Videogame} = require("../db");
 
 
 
 const getGamesDb = async() => {
 
-    await Videogame.sync();
-    const games = await Videogame.findAll();
-    if(!games) throw new Error('No hay juegos en database');
-    return games;
+    try {
+        const games = await Videogame.findAll();
+        if (games.length === 0) {
+          throw new Error('No hay juegos en la base de datos');
+        }
+        return games;
+      } catch (error) {
+        throw new Error(error.message);
+      }
 };
 
 
-module.exports = {getGamesDb};
+module.exports = getGamesDb;

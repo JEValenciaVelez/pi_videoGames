@@ -29,7 +29,7 @@ const createGame = async(game) => {
         rating: game.rating
     });
 
-    return 'Videogame Creado!';
+    return `Videogame Creado!`;
 };
 
 module.exports = createGame;
