@@ -15,8 +15,8 @@ module.exports = (sequelize) => {
         unique: true,
       },
       description: {
-        type: DataTypes.TEXT,
-        allowNull: false,
+        type: DataTypes.STRING,
+        allowNull: true,
       },
       platforms: {
         type: DataTypes.ARRAY(DataTypes.STRING),
@@ -32,7 +32,7 @@ module.exports = (sequelize) => {
       },
       rating: {
         type: DataTypes.FLOAT,
-        allowNull: false,
+        allowNull: true,
       },
       
     }

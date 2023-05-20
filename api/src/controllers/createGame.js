@@ -1,30 +1,35 @@
-const Videogame = require("../models/Videogame");
 
 
-const createGame = async({name,description,platforms,image,released,rating}) => {
+const { Videogame } = require("../db")
 
-    if(!name||!description||!platforms||!image||!released||!rating) throw new Error('Faltan campos');
 
-    const findGame = await Videogame.findOne({
-        where: {name: name}
+const createGame = async(game) => {
+
+    // return game;
+    if(!game.name||!game.description||!game.platforms||!game.image||!game.released||!game.rating){
+        throw new Error('Faltan campos');
+    }
+
+    const videogameEncontrado = await Videogame.findOne({
+        where: {name : game.name}
     });
 
-    if(findGame){
-        throw new Error('El juego ya existe en base de datos');
-    }
+    if(videogameEncontrado){
+        throw new Error('Videogame existe en base de datos');
+    };
 
     await Videogame.sync();
 
     const newGame = await Videogame.create({
-        name,
-        description,
-        platforms,
-        image,
-        released,
-        rating
+        name: game.name,
+        description: game.description,
+        platforms: game.platforms,
+        image: game.image,
+        released: game.released,
+        rating: game.rating
     });
 
-    return newGame;
+    return 'Videogame Creado!';
 };
 
 module.exports = createGame;

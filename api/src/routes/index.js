@@ -13,6 +13,8 @@ const router = Router();
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
+
+//===============================================================================================================/
 router.get('/videogames', async (req, res)=>{
 
   try{
@@ -23,6 +25,7 @@ router.get('/videogames', async (req, res)=>{
 
 });
 
+//=======================================================================================================
 
 router.get('/videogames/:idVideogame', async (req, res)=>{
 
@@ -37,6 +40,7 @@ router.get('/videogames/:idVideogame', async (req, res)=>{
 
 });
 
+//============================================================================================================
 
 router.get('/videogames', async (req, res)=>{
 
@@ -50,7 +54,7 @@ router.get('/videogames', async (req, res)=>{
 
 });
 
-
+//================================================================================================================
 
 router.get('/genres', async (req, res)=>{
 
@@ -63,6 +67,7 @@ router.get('/genres', async (req, res)=>{
 });
 
 
+//===============================================================================================================
 
 
 router.get('/database', async (req, res)=>{
@@ -75,15 +80,21 @@ router.get('/database', async (req, res)=>{
   
   });
 
-router.post('/postgame', async(req, res)=>{
+//================================================================================================================
 
-    try{
-        res.status(200).json(await createGame(req.bo));
-      }catch(error){
-        res.status(404).json({error: error.message});
-      }
+
+router.post('/videogames', async(req, res)=>{
+
+  try{
+      res.status(200).json(await createGame(req.body));
+  }catch(error){
+      res.status(404).json({error: error.message});
+  }
 
 });  
+
+//================================================================================================================
+
 
 
 module.exports = router;
