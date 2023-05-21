@@ -3,13 +3,12 @@ const {URL, API_KEY} = process.env
 
 
 
-const getGameByName = async (game) =>{
+const getGameByName = async (name) =>{
     try{
-        const response = await axios.get(`${URL}?search=${game}?key=${API_KEY}`);
+        const response = await axios.get(`${URL}?name=${name}?key=${API_KEY}`);
         const data = response.data;
-        const filteredData = data.filter(ga=>ga.name === game);
-        
-        return filteredData;
+        const nameFiltrado = data.filter(el=>el.name.toLowerCase() === name.toLowerCase());
+        return nameFiltrado;
         
     }catch(error){
         console.log(error)

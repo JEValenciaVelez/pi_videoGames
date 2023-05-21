@@ -43,12 +43,12 @@ router.get('/videogames/:idVideogame', async (req, res)=>{
 
 //============================================================================================================
 
-router.get('/videogames', async (req, res)=>{
+router.get('/videogames/', async (req, res)=>{
 
-  const {search} = req.query;
+  const {name} = req.query;
 
   try{
-    res.status(200).json(await getGameByName(search));
+    res.status(200).json(await getGameByName(name));
   }catch(error){
     res.status(404).json({error: error.message});
   }

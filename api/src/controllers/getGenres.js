@@ -10,18 +10,21 @@ const getGenres = async () => {
         const data = response.data.results;
         const genres = data.map(gen=>gen.name);
         //sincronizo el modelo Genre de la database
-        await Genre.sync();
-        //guardo los generos en la tabla
-        for(let i = 0; i<genres.length; i++){
-            const el = genres[i];
-            await Genre.create({
-                name: el
-            })
-        }
+        // await Genre.sync();
+        // //guardo los generos en la tabla
+        // for(let i = 0; i<genres.length; i++){
+        //     const el = genres[i];
+        //     await Genre.create({
+        //         name: el
+        //     })
+        // }
 
         return genres;
     }catch(error){
-        return error
+        await Genre.sync();
+        const allGenres = await Genre.findAll();
+        const allNames = allGenres.map(gen=>gen.name);
+        return allNames;
     }
 };
 
