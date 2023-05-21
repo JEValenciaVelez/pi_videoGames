@@ -8,7 +8,7 @@ const getGenres = async () => {
     try{
         const response = await axios.get(`https://api.rawg.io/api/genres?key=${API_KEY}`);
         const data = response.data.results;
-        const genres = data.map(gen=>gen.name);
+        const genres = data.map(gen=>gen.slug);
         //sincronizo el modelo Genre de la database
         // await Genre.sync();
         // //guardo los generos en la tabla

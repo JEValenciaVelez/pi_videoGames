@@ -1,12 +1,12 @@
 
 
-const { Videogame } = require("../db")
+const { Videogame, Genre } = require("../db")
 
 
 const createGame = async(game) => {
 
     // return game;
-    if(!game.name||!game.description||!game.platforms||!game.image||!game.released||!game.rating){
+    if(!game.name||!game.description||!game.platforms||!game.image||!game.released||!game.rating||!game.genre){
         throw new Error('Faltan campos');
     }
 
@@ -28,8 +28,19 @@ const createGame = async(game) => {
         platforms: game.platforms,
         image: game.image,
         released: game.released,
-        rating: game.rating
+        rating: game.rating,
+        genre: game.genre
     });
+
+    await Genre.sync();
+    
+    const findGenre = await Genre.findOne({
+        where:{name: game.genre}
+    });
+
+    if(findGenre){
+        await newGame.addGenre(findGenre);
+    }
 
     return `Videogame Creado!`;
 };
