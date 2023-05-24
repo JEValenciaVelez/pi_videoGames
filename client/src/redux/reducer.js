@@ -1,4 +1,4 @@
-import { GET_GAMES_API } from "./actions.type";
+import { GET_GAMES_API, GET_GAME_DETAIL } from "./actions.type";
 
 
 const initialState = {
@@ -14,6 +14,12 @@ export function rootReducer(state= initialState , {type, payload}){
                 ...state,
                 games: payload
             }
+
+        case GET_GAME_DETAIL:
+            return {
+                ...state,
+                gameDetail: payload
+            }    
 
         default:
             return state;  
