@@ -17,11 +17,13 @@ const getGames = async() => {
                 released: game.released,
                 rating: game.rating,
                 platforms: game.platforms.map(pl=>pl.platform.name),
-                image : game.platforms.map(pl=>pl.platform.image_background),
+                // image : game.platforms.map(pl=>pl.platform.image_background),
+                image: game.background_image,
                 genre : game.genres.map(gen=>gen.slug)
             }
         });
         return games;
+        //return data.results;
     }catch(error){
         console.log(error);
         return error;

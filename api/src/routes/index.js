@@ -17,7 +17,7 @@ const router = Router();
 
 //===============================================================================================================/
 router.get('/videogames', async (req, res) => {
-  console.log(`Se ha accedido a la ruta /videogames, req.query: ${JSON.stringify(req.query)}`);
+  console.log(`Se ha accedido a la ruta /videogames, req.query: ${req.query}`);
   const { name } = req.query;
   
   try {
@@ -49,20 +49,6 @@ router.get('/videogames/:idVideogame', async (req, res)=>{
 
 });
 
-//============================================================================================================
-
-router.get('/videogames', async (req, res)=>{
-
-  console.log(`Se ha accedido a la ruta /videogames?name={name}, req.query: ${req.query}`);
-  const {name} = req.query;
-
-  try{
-    res.status(200).json(await getGameByName(name));
-  }catch(error){
-    res.status(404).json({error: error.message});
-  }
-
-});
 
 //================================================================================================================
 

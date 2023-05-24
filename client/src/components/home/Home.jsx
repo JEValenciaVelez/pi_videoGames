@@ -14,7 +14,7 @@ const Home = () => {
                 <Nav />
             </nav>
             <main>
-                <h2>aqui el componente gamesContainer</h2>
+                <h2>Mira aqui tus videojuegos</h2>
                 <Games/>
             </main>
             <footer>

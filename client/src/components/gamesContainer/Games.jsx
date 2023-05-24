@@ -30,9 +30,7 @@ const Games = () => {
             <Link to={`/delete`}>
             <button name="delete">Delete</button>
             </Link>
-            <Link to={`/game/:id`}>
             <Game games={listGames}/>
-            </Link>
         </div>
     )
 };
