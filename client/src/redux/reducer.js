@@ -4,7 +4,8 @@ import { GET_GAMES_API, GET_GAME_DETAIL } from "./actions.type";
 const initialState = {
     games: [],
     gameDetail: {},
-    platforms: []
+    platforms: [],
+    genres : []
 };
 
 export function rootReducer(state= initialState , {type, payload}){
