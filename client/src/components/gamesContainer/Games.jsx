@@ -27,6 +27,14 @@ const Games = () => {
         dispatch(getGames());
       }, [dispatch]);
 
+    
+    const handleChange = (e)=>{
+        if (e.target.name === 'itemsPerPage') {
+            setItemsPerPage(parseInt(e.target.value));
+            setCurrentPage(1); 
+        }
+    };
+
 
     return(
         <div>
@@ -41,6 +49,14 @@ const Games = () => {
             <Link to={`/delete`}>
             <button name="delete">Delete</button>
             </Link>
+            <div className="items-per-page">
+            <label htmlFor="itemsPerPage">Cantidad de ítems por página:</label>
+            <select onChange={handleChange} name="itemsPerPage">
+              <option value="6">6</option>
+              <option value="12">12</option>
+              <option value="24">24</option>
+            </select>
+          </div>
             <Game games={listGames.slice(indexOfFirstItem, indexOfLastItem)}/>
             <Pagination
             itemsPerPage={itemsPerPage}
