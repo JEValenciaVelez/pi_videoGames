@@ -19,7 +19,7 @@ const getGames = async() => {
                 platforms: game.platforms.map(pl=>pl.platform.name),
                 // image : game.platforms.map(pl=>pl.platform.image_background),
                 image: game.background_image,
-                genre : game.genres.map(gen=>gen.slug)
+                genres : game.genres.map(gen=>gen.slug)
             }
         });
         return games;
