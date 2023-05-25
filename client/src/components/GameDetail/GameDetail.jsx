@@ -13,7 +13,7 @@ const GameDetail = () => {
 
     useEffect(()=>{
         dispatch(getGameDetail(id));
-    },[dispatch]);
+    },[dispatch, id]);
 
     return(
         <div className="detail">

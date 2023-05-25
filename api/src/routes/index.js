@@ -18,11 +18,11 @@ const router = Router();
 //===============================================================================================================/
 router.get('/videogames', async (req, res) => {
   console.log(`Se ha accedido a la ruta /videogames, req.query: ${req.query}`);
-  const { name } = req.query;
+  const { search } = req.query;
   
   try {
-    if (name) {
-      const game = await getGameByName(name);
+    if (search) {
+      const game = await getGameByName(search);
       res.status(200).json(game);
     } else {
       const games = await getGames();

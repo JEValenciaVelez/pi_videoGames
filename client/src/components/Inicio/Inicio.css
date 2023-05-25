@@ -1,0 +1,31 @@
+.inicio {
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  .titulo-inicio {
+    font-size: 32px;
+    color: #333;
+  }
+  
+  .imagen-inicio {
+    width: 400px;
+    height: 300px;
+    margin-top: 20px;
+  }
+  
+  .ingresar {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  
+  .ingresar:hover {
+    background-color: #555;
+  }
+  
