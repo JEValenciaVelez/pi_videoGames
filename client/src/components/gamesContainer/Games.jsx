@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {  getGameByName, getGames } from "../../redux/actions";
 import { useEffect, useState } from "react";
 import Pagination from "./pagination/pagination";
-
+import './Games.css'
 
 
 
@@ -25,7 +25,7 @@ const Games = () => {
 
     const dispatch = useDispatch();
     const listGames = useSelector(state => state.games);
-    //const game = useSelector(state => state.gameByName);
+    
 
     useEffect(() => {
         dispatch(getGames());
@@ -53,8 +53,9 @@ const Games = () => {
     
 
     return(
-        <div>
-            <Link to={`/create`}>
+        <div className="container-games">
+          <div className="conatiner-buttons">
+          <Link to={`/create`}>
             <button name="post">NewGame</button>
             </Link>
             <button onClick={handleSearch}>Buscar</button>
@@ -66,6 +67,7 @@ const Games = () => {
             <Link to={`/delete`}>
             <button name="delete">Delete</button>
             </Link>
+          </div>
             <div className="items-per-page">
             <label htmlFor="itemsPerPage">Cantidad de ítems por página:</label>
             <select onChange={handleChange} name="itemsPerPage">
