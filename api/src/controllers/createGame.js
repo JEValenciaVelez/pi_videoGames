@@ -42,7 +42,7 @@ const createGame = async(game) => {
         await newGame.addGenre(findGenre);
     }
 
-    return `Videogame Creado!`;
+    return newGame;
 };
 
 module.exports = createGame;

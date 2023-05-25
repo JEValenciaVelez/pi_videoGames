@@ -1,18 +1,40 @@
 
 import {Link} from 'react-router-dom';
+import { useDispatch } from 'react-redux'
+import { database } from '../../redux/actions';
+
 
 const Nav = () => {
+
+    const dispatch = useDispatch();
+
+    const handleClick = (e) => {
+        switch(e.target.value){
+            case 'database':{
+                e.preventDefault();
+                console.log(e.target.value);
+                dispatch(database());
+            }
+            break;
+
+            case 'api' : {
+                e.preventDefault();
+                console.log(e.target.value)
+            }
+            break;
+        }
+    };
 
     return(
         <nav>
             <Link to={'/'}>
             <button>Inicio</button>
-            <button name='A-Z'>A-Z</button>
-            <button name='Z-A'>Z-A</button>
-            <button name='des'>Popular</button>
-            <button name='asc'>Menos Popular</button>
-            <button name='api'>Api</button>
-            <button name='database'>Database</button>
+            <button onClick={handleClick} name='A-Z' value='A-Z'>A-Z</button>
+            <button onClick={handleClick} name='Z-A' value='Z-A'>Z-A</button>
+            <button onClick={handleClick} name='des'  value='des'>Popular</button>
+            <button onClick={handleClick} name='asc'  value='asc'>Menos Popular</button>
+            <button onClick={handleClick} name='api' value='api'>Api</button>
+            <button onClick={handleClick} name='database' value='database'>Database</button>
             </Link>
 
         </nav>

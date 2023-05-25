@@ -1,4 +1,5 @@
 const { default: axios } = require("axios");
+const {Videogame} = require('../db')
 const {URL, API_KEY} = process.env
 
 
@@ -23,7 +24,21 @@ const getGameById = async (id) => {
 
         return game;
     }catch(error){
-        throw new Error(`error : ${error}`);
+        console.log(error);
+
+        await Videogame.sync();
+
+        const videoGameFromDb = await Videogame.findByPk(id);
+    
+        if (videoGameFromDb) {
+    
+          return videoGameFromDb.toJSON();
+    
+        } else {
+    
+          throw new Error("No se encontró la receta en la base de datos.");
+    
+        }
     }
 };
 

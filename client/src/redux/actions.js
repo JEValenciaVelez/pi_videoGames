@@ -1,4 +1,4 @@
-import { GET_GAMES_API, GET_GAME_DETAIL, GET_GAME_NAME } from "./actions.type";
+import { CREATE_GAME, GET_GAMES_API, GET_GAMES_DATABASE, GET_GAME_DETAIL, GET_GAME_NAME } from "./actions.type";
 import axios from 'axios';
 
 
@@ -37,6 +37,35 @@ export function getGameByName(name){
             const data = response.data;
             console.log(`data en la action: ${Object.values(data)}`)
             dispatch({type: GET_GAME_NAME, payload: data})
+        }catch(error){
+            console.log(error)
+        }
+    }
+}
+
+
+export function postGame(game){
+    return async (dispatch) => {
+        try{
+            const response = await axios.post(`http://localhost:3001/database`, game, {maxContentLength: Infinity});
+            const data = response.data;
+            dispatch({type: CREATE_GAME, payload: data})
+            alert(`video juego -> ${game.name} creado!`)
+        }catch(error){
+            console.log('game en la action', game);
+            console.log(`error en la action: `, error);
+            
+        }
+    }
+}
+
+
+export function database(){
+    return async (dispatch) => {
+        try{
+            const response = await axios.get(`http://localhost:3001/database`);
+            const data = response.data;
+            dispatch({type: GET_GAMES_DATABASE, payload: data});
         }catch(error){
             console.log(error)
         }
