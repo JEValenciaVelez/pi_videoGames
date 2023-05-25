@@ -10,19 +10,22 @@ const Nav = () => {
 
     const handleClick = (e) => {
         switch(e.target.value){
-            case 'database':{
+            case 'database':
                 e.preventDefault();
                 console.log(e.target.value);
                 dispatch(database());
-            }
+            
             break;
 
-            case 'api' : {
+            case 'api' : 
                 e.preventDefault();
                 console.log(e.target.value);
                 dispatch(getGames());
-            }
+            
             break;
+
+            default:
+                break;
         }
     };
 
