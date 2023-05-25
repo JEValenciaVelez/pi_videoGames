@@ -1,7 +1,7 @@
 
 import {Link} from 'react-router-dom';
 import { useDispatch } from 'react-redux'
-import { database } from '../../redux/actions';
+import { database, getGames } from '../../redux/actions';
 
 
 const Nav = () => {
@@ -19,7 +19,8 @@ const Nav = () => {
 
             case 'api' : {
                 e.preventDefault();
-                console.log(e.target.value)
+                console.log(e.target.value);
+                dispatch(getGames());
             }
             break;
         }

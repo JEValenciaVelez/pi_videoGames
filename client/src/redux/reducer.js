@@ -1,4 +1,4 @@
-import { CREATE_GAME, GET_GAMES_API, GET_GAMES_DATABASE, GET_GAME_DETAIL, GET_GAME_NAME } from "./actions.type";
+import { CREATE_GAME, DELETE_GAME, GET_GAMES_API, GET_GAMES_DATABASE, GET_GAME_DETAIL, GET_GAME_NAME } from "./actions.type";
 
 
 const initialState = {
@@ -6,7 +6,8 @@ const initialState = {
     gameDetail: {},
     platforms: [],
     genres : [],
-    posts: []
+    posts: [],
+    
 };
 
 export function rootReducer(state= initialState , {type, payload}){
@@ -39,6 +40,12 @@ export function rootReducer(state= initialState , {type, payload}){
             return {
                 ...state,
                 games: payload
+            }  
+            
+        case DELETE_GAME:
+            return {
+                ...state,
+                games: state.games.filter(ga=> ga.name !== payload)
             }    
 
         default:

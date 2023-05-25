@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import {useDispatch} from 'react-redux'
+import { deleteGame } from "../../redux/actions";
 
 
 
@@ -19,6 +20,7 @@ const DeleteGame = () => {
     const handleSubmit = (e)=> {
         e.preventDefault();
         console.log(name);
+        dispatch(deleteGame(name));
     };
 
     return(

@@ -1,4 +1,4 @@
-import { CREATE_GAME, GET_GAMES_API, GET_GAMES_DATABASE, GET_GAME_DETAIL, GET_GAME_NAME } from "./actions.type";
+import { CREATE_GAME, DELETE_GAME, GET_GAMES_API, GET_GAMES_DATABASE, GET_GAME_DETAIL, GET_GAME_NAME } from "./actions.type";
 import axios from 'axios';
 
 
@@ -68,6 +68,20 @@ export function database(){
             dispatch({type: GET_GAMES_DATABASE, payload: data});
         }catch(error){
             console.log(error)
+        }
+    }
+}
+
+export function deleteGame(name){
+    return async (dispatch) => {
+        try{
+            console.log('name en la action: ',name)
+            const response = await axios.delete(`http://localhost:3001/delete`, { data: { name } });
+            const data = response.data;
+            dispatch({type: DELETE_GAME, payload:data});
+            alert('Game Eliminado');
+        }catch(error){
+            console.log('error en la action', error)
         }
     }
 }
