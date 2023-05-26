@@ -17,7 +17,7 @@
   .ingresar {
     padding: 10px 20px;
     font-size: 18px;
-    background-color: #333;
+    background-color: #0cb7eb;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -26,6 +26,25 @@
   }
   
   .ingresar:hover {
-    background-color: #555;
+    background-color: #e9e507;
   }
+
+  
+  .animacion-container {
+    opacity: 0;
+    animation-name: fadeIn;
+    animation-duration: 1s;
+    animation-delay: 0.5s;
+    animation-fill-mode: forwards;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
   
