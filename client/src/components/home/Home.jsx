@@ -8,15 +8,16 @@ const Home = () => {
 
     return (
         <div className="home-container">
-            <header className="encabezado">
-                <h1>Bienvenido a la app de juegos</h1>
-            </header>
-            <nav className="nav-bar">
-                <Nav />
-            </nav>
+           
             <main className="menu">
-                <h2>Mira aqui tus videojuegos</h2>
+                {/* <h2>Mira aqui tus videojuegos</h2> */}
+                <section className="section-right">
+                <Nav />
+                </section >
+                <section className="section-left">
                 <Games/>
+                </section>
+                
             </main>
             <footer className="footer">
                 <Footer/>

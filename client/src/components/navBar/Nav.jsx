@@ -2,7 +2,7 @@
 import {Link} from 'react-router-dom';
 import { useDispatch } from 'react-redux'
 import { database, getGames, getOrder } from '../../redux/actions';
-
+import './nav.css';
 
 
 const Nav = () => {
@@ -60,7 +60,7 @@ const Nav = () => {
     };
 
     return(
-        <nav>
+        <nav className='nav-bar'>
             <Link to={'/'}>
             <button>Inicio</button>
             <button onClick={handleClick} name='A-Z' value='A-Z'>A-Z</button>

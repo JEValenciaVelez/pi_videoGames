@@ -50,13 +50,13 @@ export function rootReducer(state= initialState , {type, payload}){
             
         case ORDER_GAMES:
             switch (payload){
-                case 'Z-A':
+                case 'A-Z':
                     return {
                         ...state,
                         games: [...state.games].sort((a,b)=>a.name.charAt(0).localeCompare(b.name.charAt(0)))
                     }
 
-                case 'A-Z':
+                case 'Z-A':
                      return {
                          ...state,
                         games: [...state.games].sort((a,b)=>b.name.charAt(0).localeCompare(a.name.charAt(0)))
