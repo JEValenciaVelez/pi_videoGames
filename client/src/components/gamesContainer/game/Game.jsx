@@ -14,6 +14,7 @@ const Game = ({ games }) => {
               <img src={g.image} alt="imagenGame" />
             </Link>
             <h2>{g.genres}</h2>
+            <h2>{g.platforms.join(', ')}</h2>
           </div>
         ))
       ) : (
