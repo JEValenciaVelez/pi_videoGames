@@ -47,4 +47,12 @@
     width: 200px;
     height: auto;
   }
+
+  .container-buttons {
+    display: inline;
+    align-items: center;
+  }
+  
+  
+  
   
