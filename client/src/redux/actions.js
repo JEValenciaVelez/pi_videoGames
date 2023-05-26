@@ -46,6 +46,7 @@ export function getGameByName(name){
 
 export function postGame(game){
     return async (dispatch) => {
+        console.log('game antes del try->',game);
         try{
             const response = await axios.post(`http://localhost:3001/database`, game, {maxContentLength: Infinity});
             const data = response.data;

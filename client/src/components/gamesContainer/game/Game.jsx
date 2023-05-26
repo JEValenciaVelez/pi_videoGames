@@ -13,7 +13,7 @@ const Game = ({ games }) => {
             <Link to={`/game/${g.id}`}>
               <img src={g.image} alt="imagenGame" />
             </Link>
-            <h2>{g.genres}</h2>
+            <h4>{g.genres}</h4>
             <h2>{g.platforms.join(', ')}</h2>
           </div>
         ))

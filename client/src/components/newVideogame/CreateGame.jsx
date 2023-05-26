@@ -14,18 +14,20 @@ const CreateGame = () => {
         name: '',
         description: '',
         rating: 0,
-        platforms: '',
+        platforms: [],
         released: '',
-        image: ''
+        image: '',
+        genre: ''
     });
 
     let [errors, setErrors] = useState({
         name: '',
         description: '',
         rating: 0,
-        platforms: '',
+        platforms: [],
         released: '',
-        image: ''
+        image: '',
+        genre: ''
     });
 
     const validate = (game) => {
@@ -43,20 +45,35 @@ const CreateGame = () => {
 
 
     const handleChange = (e)=> {
-        setGame({
+        console.log('nombre del input->', e.target.name)
+        console.log('tipo de dato propiedad platforms antes de setearse-> ', typeof game.platforms)
+        if(e.target.name === 'platforms'){ 
+            const array = e.target.value.split(' ');
+            setGame({
+                ...game,
+                [e.target.name] : [...array]
+            });
+            
+        }else{
+            setGame({
             ...game,
             [e.target.name]: e.target.value
-        })
+        });
+        }
+        
 
         setErrors(validate({
             ...game,
             [e.target.name] : e.target.value
         }))
     };
+    console.log('en el handlechange->',  game.platforms)
 
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log('game en el submit', game)
+        console.log('typo de dato platforms-> ',typeof game.platforms)
+        
         if(Object.keys(errors).length===0){
             dispatch(postGame(game));
             return game;
@@ -105,6 +122,13 @@ const CreateGame = () => {
              onChange={handleChange}
              />
              {errors.platforms && <p>{errors.platforms}</p>}
+             <span>*Este campo es obligatorio</span>
+            <input 
+            type="text" 
+            name="genre" 
+            placeholder="genre" 
+            onChange={handleChange} 
+            />
               <span>*Este campo es obligatorio</span>
              <input 
              type="text" 
@@ -125,7 +149,7 @@ const CreateGame = () => {
                 {errors.image && <p>{errors.image}</p>}
             </div>
 
-             <button onClick={handleSubmit}>Crear</button>
+             <button >Crear</button>
             
             <Link to={`/home`}>
             <h2>Volver</h2>
