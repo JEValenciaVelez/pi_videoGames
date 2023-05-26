@@ -1,4 +1,4 @@
-import { CREATE_GAME, DELETE_GAME, GET_GAMES_API, GET_GAMES_DATABASE, GET_GAME_DETAIL, GET_GAME_NAME } from "./actions.type";
+import { CREATE_GAME, DELETE_GAME, GET_GAMES_API, GET_GAMES_DATABASE, GET_GAME_DETAIL, GET_GAME_NAME, ORDER_GAMES } from "./actions.type";
 
 
 const initialState = {
@@ -46,7 +46,38 @@ export function rootReducer(state= initialState , {type, payload}){
             return {
                 ...state,
                 games: state.games.filter(ga=> ga.name !== payload)
-            }    
+            }  
+            
+        case ORDER_GAMES:
+            switch (payload){
+                case 'Z-A':
+                    return {
+                        ...state,
+                        games: [...state.games].sort((a,b)=>a.name.charAt(0).localeCompare(b.name.charAt(0)))
+                    }
+
+                case 'A-Z':
+                     return {
+                         ...state,
+                        games: [...state.games].sort((a,b)=>b.name.charAt(0).localeCompare(a.name.charAt(0)))
+                    }
+
+                case 'des':
+                    return {
+                         ...state,
+                        games: [...state.games].sort((a,b)=>b.rating - a.rating)
+                    }
+
+                case 'asc':
+                    return {
+                         ...state,
+                        games: [...state.games].sort((a,b)=>a.rating - b.rating)
+                    }
+                
+                default:
+                    return state;
+            }
+           
 
         default:
             return state;  

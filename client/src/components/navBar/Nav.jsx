@@ -1,7 +1,8 @@
 
 import {Link} from 'react-router-dom';
 import { useDispatch } from 'react-redux'
-import { database, getGames } from '../../redux/actions';
+import { database, getGames, getOrder } from '../../redux/actions';
+
 
 
 const Nav = () => {
@@ -23,6 +24,35 @@ const Nav = () => {
                 dispatch(getGames());
             
             break;
+
+            case 'A-Z':
+                e.preventDefault();
+                console.log(e.target.value);
+                dispatch(getOrder(e.target.value));
+
+            break;
+
+            case 'Z-A':
+                e.preventDefault();
+                console.log(e.target.value);
+                dispatch(getOrder(e.target.value));
+
+            break;
+
+            case 'des':
+                e.preventDefault();
+                console.log(e.target.value);
+                dispatch(getOrder(e.target.value));
+
+            break;
+
+            case 'asc':
+                e.preventDefault();
+                console.log(e.target.value);
+                dispatch(getOrder(e.target.value));
+
+            break;
+            
 
             default:
                 break;

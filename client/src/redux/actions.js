@@ -1,4 +1,4 @@
-import { CREATE_GAME, DELETE_GAME, GET_GAMES_API, GET_GAMES_DATABASE, GET_GAME_DETAIL, GET_GAME_NAME } from "./actions.type";
+import { CREATE_GAME, DELETE_GAME, GET_GAMES_API, GET_GAMES_DATABASE, GET_GAME_DETAIL, GET_GAME_NAME, ORDER_GAMES } from "./actions.type";
 import axios from 'axios';
 
 
@@ -83,5 +83,13 @@ export function deleteGame(name){
         }catch(error){
             console.log('error en la action', error)
         }
+    }
+}
+
+
+export function getOrder(order){
+    return (dispatch) => {
+        dispatch({type:ORDER_GAMES, payload: order});
+        console.log('valor de order: ', order)
     }
 }

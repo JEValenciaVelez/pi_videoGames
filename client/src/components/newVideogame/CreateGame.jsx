@@ -14,7 +14,7 @@ const CreateGame = () => {
         name: '',
         description: '',
         rating: 0,
-        platforms: [],
+        platforms: '',
         released: '',
         image: ''
     });
@@ -23,7 +23,7 @@ const CreateGame = () => {
         name: '',
         description: '',
         rating: 0,
-        platforms: [],
+        platforms: '',
         released: '',
         image: ''
     });
@@ -125,7 +125,7 @@ const CreateGame = () => {
                 {errors.image && <p>{errors.image}</p>}
             </div>
 
-             <button type="submit">Crear</button>
+             <button onClick={handleSubmit}>Crear</button>
             
             <Link to={`/home`}>
             <h2>Volver</h2>
