@@ -49,4 +49,20 @@
     cursor: pointer;
   }
 
+  button {
+    padding: 10px 20px;
+    background-color: #4285F4;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #12da1c;
+  }
+  
+  button:active {
+    background-color: #1A48B8;
+  }
   
