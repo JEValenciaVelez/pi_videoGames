@@ -1,5 +1,6 @@
 const { default: axios } = require("axios");
-const {URL, API_KEY} = process.env
+const {URL, API_KEY} = process.env;
+const {Videogame} = require('../db')
 
 
 
@@ -10,6 +11,15 @@ const getGameByName = async (name) =>{
         const results = data.results
         const nameFiltrado = results.filter(el=>el.name.toLowerCase().split(' ').includes(name.toLowerCase()));
         if(nameFiltrado.length===0){
+            const result = [];
+            const VideogameFound = await Videogame.findOne({
+                where: {name: name.toLowerCase().trim()}
+            });
+            console.log('videogame en base de datos->',VideogameFound)
+            if(VideogameFound){
+                result.push(VideogameFound);
+                return result
+            } 
             return `No se encontraron coincidencias`
         }
         const gameMapeado = nameFiltrado.map(ga=>{

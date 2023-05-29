@@ -54,6 +54,7 @@ const Games = () => {
 
     return(
         <div className="container-games">
+          {console.log(listGames)}
           <div className="conatiner-buttons">
           <Link to={`/create`}>
             <button name="post">NewGame</button>

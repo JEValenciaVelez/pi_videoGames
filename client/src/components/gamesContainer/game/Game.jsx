@@ -1,13 +1,14 @@
 import { Link } from 'react-router-dom';
 import './game.css'
 
-
 const Game = ({ games }) => {
+  // Verificar si "games" es una cadena y convertirla en un arreglo vacío si es así
+  const gamesArray = typeof games === 'string' ? [] : games;
 
   return (
     <div className="container">
-      {games && games.length > 0 ? (
-        games.map(g => (
+      {gamesArray.length > 0 ? (
+        gamesArray.map(g => (
           <div className="card" key={g.id}>
             <h1>{g.name}</h1>
             <Link to={`/game/${g.id}`}>
@@ -18,11 +19,10 @@ const Game = ({ games }) => {
           </div>
         ))
       ) : (
-        <h1>No hay respuesta de la api</h1>
+        <h1>No hay respuesta </h1>
       )}
     </div>
   );
 };
-
 
 export default Game;

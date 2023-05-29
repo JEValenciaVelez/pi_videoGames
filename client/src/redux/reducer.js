@@ -33,7 +33,7 @@ export function rootReducer(state= initialState , {type, payload}){
         case CREATE_GAME:
             return {
                 ...state,
-                posts: state.posts.push(payload)
+                posts: [...state.posts, payload]
             }
 
         case GET_GAMES_DATABASE:

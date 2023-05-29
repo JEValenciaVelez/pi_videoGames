@@ -5,7 +5,7 @@ const { Videogame } = require("../db")
 const deleteGame = async (name) => {
 
     try {
-        const nameToLower = name.toLowerCase();
+        const nameToLower = name.toLowerCase().trim();
         const game = await Videogame.findOne({
             where: {name: nameToLower}
         });

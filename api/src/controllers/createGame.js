@@ -10,7 +10,7 @@ const createGame = async(game) => {
         throw new Error('Faltan campos');
     }
 
-    const nameToLower = game.name.toLowerCase();
+    const nameToLower = game.name.toLowerCase().trim();
 
     const videogameEncontrado = await Videogame.findOne({
         where: {name : nameToLower}
