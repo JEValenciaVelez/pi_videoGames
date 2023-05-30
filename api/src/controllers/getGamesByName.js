@@ -6,11 +6,11 @@ const {Videogame} = require('../db')
 
 const getGameByName = async (name) =>{
     try{
-        const response = await axios.get(`${URL}?key=${API_KEY}`);
+        const response = await axios.get(`${URL}?search=${name}&key=${API_KEY}`);
         const data = response.data;
         const results = data.results
-        const nameFiltrado = results.filter(el=>el.name.toLowerCase().split(' ').includes(name.toLowerCase()));
-        if(nameFiltrado.length===0){
+        // const nameFiltrado = results.filter(el=>el.name.toLowerCase().split(' ').includes(name.toLowerCase()));
+        if(results.length===0){
             const result = [];
             const VideogameFound = await Videogame.findOne({
                 where: {name: name.toLowerCase().trim()}
@@ -22,7 +22,7 @@ const getGameByName = async (name) =>{
             } 
             return `No se encontraron coincidencias`
         }
-        const gameMapeado = nameFiltrado.map(ga=>{
+        const gameMapeado = results.map(ga=>{
             return {
                 id: ga.id,
                 name: ga.name,
