@@ -7,7 +7,7 @@ const { URL, API_KEY } = process.env;
 const getGames = async() => {
 
     try{
-        const response = await axios.get(`${URL}?key=${API_KEY}`);
+        const response = await axios.get(`${URL}?key=${API_KEY}`,{timeout: 5000});
         const data = response.data;
         //console.log(data.results)
         const games = data.results.map(game=>{

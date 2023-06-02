@@ -38,7 +38,7 @@ const getGameByName = async (name) =>{
         return gameMapeado;
         
     }catch(error){
-        throw new Error(error.message);
+        throw new Error(`Error en el controller-> ${error.message}`);
     }
 };
 

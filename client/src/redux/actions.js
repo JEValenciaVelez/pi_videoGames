@@ -39,6 +39,7 @@ export function getGameByName(name){
             dispatch({type: GET_GAME_NAME, payload: data})
         }catch(error){
             console.log(error)
+            alert(`No se encontro el videojuego`);
         }
     }
 }
