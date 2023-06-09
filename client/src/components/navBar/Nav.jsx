@@ -1,13 +1,22 @@
 
 import {Link} from 'react-router-dom';
 import { useDispatch } from 'react-redux'
-import { database, getGames, getOrder } from '../../redux/actions';
+import { database, getGames,  getGenresAction, getOrder } from '../../redux/actions';
 import './nav.css';
+
+
 
 
 const Nav = () => {
 
     const dispatch = useDispatch();
+    
+
+    const handleGenres = (e) => {
+        e.preventDefault();
+        console.log(e.target.value);
+        dispatch(getGenresAction(e.target.value));
+    }
 
     const handleClick = (e) => {
         switch(e.target.value){
@@ -61,6 +70,7 @@ const Nav = () => {
 
     return(
         <nav className='nav-bar'>
+            
             <Link to={'/'}>
             <button>Inicio</button>
             <button onClick={handleClick} name='A-Z' value='A-Z'>A-Z</button>
@@ -70,6 +80,28 @@ const Nav = () => {
             <button onClick={handleClick} name='api' value='api'>Api</button>
             <button onClick={handleClick} name='database' value='database'>Database</button>
             </Link>
+            <select onChange={handleGenres}>
+                <option value="">Filtrar por generos</option>
+                <option value="action">action</option>
+                <option value="indie">indie</option>
+                <option value="adventure">adventure</option>
+                <option value="role-playing-games-rpg">role-playing-games-rpg</option>
+                <option value="strategy">strategy</option>
+                <option value="shooter">shooter</option>
+                <option value="casual">casual</option>
+                <option value="simulation">simulation</option>
+                <option value="puzzle">puzzle</option>
+                <option value="arcade">arcade</option>
+                <option value="platformer">platformer</option>
+                <option value="massively-multiplayer">massively-multiplayer</option>
+                <option value="racing">racing</option>
+                <option value="sports">sports</option>
+                <option value="fighting">fighting</option>
+                <option value="family">family</option>
+                <option value="board-games">board-games</option>
+                <option value="educational">educational</option>
+                <option value="card">card</option>
+            </select>
 
         </nav>
     )
