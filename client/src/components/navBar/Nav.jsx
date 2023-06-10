@@ -70,16 +70,25 @@ const Nav = () => {
 
     return(
         <nav className='nav-bar'>
-            
+
             <Link to={'/'}>
             <button>Inicio</button>
-            <button onClick={handleClick} name='A-Z' value='A-Z'>A-Z</button>
-            <button onClick={handleClick} name='Z-A' value='Z-A'>Z-A</button>
-            <button onClick={handleClick} name='des'  value='des'>Popular</button>
-            <button onClick={handleClick} name='asc'  value='asc'>Menos Popular</button>
-            <button onClick={handleClick} name='api' value='api'>Api</button>
-            <button onClick={handleClick} name='database' value='database'>Database</button>
             </Link>
+            
+            <select onChange={handleClick}>
+                <option value="">Ordenar</option>
+                <option value="A-Z">A-Z</option>
+                <option value="Z-A">Z-A</option>
+                <option value="des">Descendente</option>
+                <option value="asc">Ascendente</option>
+            </select>
+
+            <select onChange={handleClick}>
+                <option value="">Origen</option>
+                <option value="api">Api</option>
+                <option value="database">Database</option>  
+            </select>
+
             <select onChange={handleGenres}>
                 <option value="">Filtrar por generos</option>
                 <option value="action">action</option>
