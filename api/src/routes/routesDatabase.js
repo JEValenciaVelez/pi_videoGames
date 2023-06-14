@@ -10,7 +10,8 @@ const router = Router();
 router.get('/', async (req, res)=>{
 
     try{
-      res.status(200).json(await getGamesDb());
+      const games = await getGamesDb()
+      res.status(200).json(games);
     }catch(error){
       res.status(404).json({error: error.message});
     }
